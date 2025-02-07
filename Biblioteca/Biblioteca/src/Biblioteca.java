@@ -28,7 +28,7 @@ public class Biblioteca {
     public void setArrayUsuarios(Usuario[] arrayUsuarios) {
         this.arrayUsuarios = arrayUsuarios;
     }
-    public Libro[] getArrayLibros() {
+    public Libro[] getArrayLibros() { //Rtrtrr6t
         return arrayLibros;
     }
     public void setArrayLibros(Libro[] arrayLibros) {
