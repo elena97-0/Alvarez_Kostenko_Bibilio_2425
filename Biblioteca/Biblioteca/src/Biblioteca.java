@@ -28,7 +28,7 @@ public class Biblioteca {
     public void setArrayUsuarios(Usuario[] arrayUsuarios) {
         this.arrayUsuarios = arrayUsuarios;
     }
-    public Libro[] getArrayLibros() { //Rtrtrr6t
+    public Libro[] getArrayLibros() { 
         return arrayLibros;
     }
     public void setArrayLibros(Libro[] arrayLibros) {
@@ -36,4 +36,7 @@ public class Biblioteca {
     }
 
     //cambio
+    //gfrhggjhjh
+    //hffhhfue
+    //fhje
 }
