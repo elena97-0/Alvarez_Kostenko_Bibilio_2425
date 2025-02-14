@@ -129,10 +129,10 @@ public class App {
         Biblioteca biblioteca = new Biblioteca(0, 0, arrayUsuarios, arrayLibros, 0, arrayLibrosPrestados);
 
         // Libro
-        Libro don_Quijote = new Libro("Don_Quijote", "Miguel de Cervantes", "Comedia");
-        Libro el_Conde_Monte_Cristo = new Libro("El Conde de Montecristo", "Alexandre Dumas", "Aventura");
-        Libro crimen_y_Castigo = new Libro("Crimen y Castigo", "Fiódor Dostoievski", "Drama psicológico");
-        Libro mil_novecientos_ochenta_y_cuatro = new Libro("1984", "George Orwell", "Ciencia ficción distópica");
+        //Libro don_Quijote = new Libro("Don_Quijote", "Miguel de Cervantes", "Comedia");
+        //Libro el_Conde_Monte_Cristo = new Libro("El Conde de Montecristo", "Alexandre Dumas", "Aventura");
+        //Libro crimen_y_Castigo = new Libro("Crimen y Castigo", "Fiódor Dostoievski", "Drama psicológico");
+        //Libro mil_novecientos_ochenta_y_cuatro = new Libro("1984", "George Orwell", "Ciencia ficción distópica");
         biblioteca.agregarUsuario(daniel);
         // Programa
         String libroIsbn = "";
@@ -225,19 +225,35 @@ public class App {
                             case 1:
 
                                 System.out.println("Has elegido Agregar libros");
+                                sc.nextLine(); //limpiar buffer
+                                System.out.println("Introduce título a registrar");
+                                String titulo= sc.nextLine();
+                                System.out.println("Introduce autor a registrar");
+                                String autor= sc.nextLine();
+                                System.out.println("Introduce categoría a registrar");
+                                String categoria = sc.nextLine();
+                                biblioteca.AgregarLibroNuevo(titulo, autor, categoria);
+
+                                
 
                                 break;
                             case 2:
                                 System.out.println("Has elegido eliminar libros");
+                                
 
                                 break;
                             case 3:
-                                System.out.println("Has elegido buscar libros ya sea por titulo, categoria o autor");
+                                sc.nextLine(); //limpiar el buffer
+                                System.out.println("Has elegido buscar libro por isbn ");
+                                int isbn_introducido = sc.nextInt();
+                                
+                                biblioteca.buscarlibro(isbn_introducido);
 
                                 break;
 
                             case 4:
                                 System.out.println("Has elegido mostrar todos los libros disponibles");
+                                biblioteca.mostrarLibrosDisponibles();
                                 break;
 
                             default:
