@@ -88,15 +88,50 @@ public class Biblioteca {
     }
 
 
-    public void AgregarLibroNuevo(Usuario usuario) {
-
-        if (numUsuarios < this.arrayUsuarios.length) {
-            this.arrayUsuarios[numUsuarios] = usuario;
-            numUsuarios++;
+    public void AgregarLibroNuevo(String titulo, String autor, String categoria) {
+        Libro libro = new Libro(titulo, autor, categoria);
+        libro.setAutor(autor);
+        libro.setCategoria(categoria);
+        libro.setTitulo(titulo);
+        if (numLibros < this.arrayLibros.length) {
+            this.arrayLibros[numLibros] = libro;
+            numLibros++;
         } else {
-            System.out.println("No caben mas usuarios (Está lleno la biblioteca de usuarios)");
+            System.out.println("No caben mas libros (Está lleno la biblioteca de libros)");
         }
 
+    }
+
+    public void mostrarLibrosDisponibles() {
+        boolean noExiste = true;
+        for (int i = 0; i < getNumLibros(); i++) {
+            arrayLibros[i].getIsbn();
+            noExiste = false;
+            System.out.println("El libro con título " + arrayLibros[i].getTitulo() + " y el autor "
+                    + arrayLibros[i].getAutor() + " tiene la categoría " + arrayLibros[i].getCategoria() + " y isbn "
+                    + arrayLibros[i].getIsbn());
+
+        }
+        if (noExiste) {
+            System.out.println("No existen libros para mostrar");
+        }
+    }
+    
+    public void buscarlibro(int isbn_introducido) {
+        boolean noExiste = checkeadorArraysLibros(isbn_introducido);
+        
+        if (noExiste) {
+            System.out.println("No existe");
+        } else {
+            for (int i = 0; i < getNumLibros(); i++) {
+                if (arrayLibros[i].getIsbn() == isbn_introducido) {
+                    System.out.println("El libro con isbn " + arrayLibros[i].getIsbn() + " , el título "
+                            + arrayLibros[i].getTitulo() + ", la categoría " + arrayLibros[i].getCategoria()
+                            + " y el autor " + arrayLibros[i].getAutor() + " encontrado");
+
+                }
+            }
+        }
     }
 
     public void registrarUsuario(String nombreUsuario, String dni, String contrasenia) {
@@ -135,5 +170,33 @@ public class Biblioteca {
             System.out.println("No caben mas usuarios (Está lleno la biblioteca)");
         }
 
+    }
+
+    public void eliminarLibro(int isbn) {
+        boolean noExiste = checkeadorArraysLibros(isbn);
+        if (noExiste == true) {
+            System.out.println("Error, no existe el libro a eliminar");
+        } else {
+            System.out.println("Eliminación realizada con éxito");
+            if (getNumLibros() >= 1) {
+                boolean encontrado = true;
+                for (int i = 0; getNumLibros() < i && encontrado; i++) {
+                    if (arrayLibros[i].getIsbn() == isbn) {
+                        encontrado = false;
+                        arrayLibros[i] = null;
+                        numLibros--;
+                        for (int j = 0; j < numLibros - 1; j++) {
+                            arrayLibros[j] = arrayLibros[j + 1];
+                        }
+                    }
+                    
+                }
+
+            } else {
+                System.out.println("No se puede eliminar, no hay ningún libro");
+
+            }
+        }
+        
     }
 }
